@@ -1,12 +1,7 @@
 import { ActionTypes } from "../constant/constant"
 
 const in_state={
-    meetings:[
-       {
-         title:" comp",
-        description:"lets change",
-       }
-    ]
+    meetings:[  ]
 }
 
 export const mreducers=(state=in_state,{type, payload})=>
@@ -15,11 +10,15 @@ export const mreducers=(state=in_state,{type, payload})=>
     switch(type ){
 
         case ActionTypes.ADD_MEETING:{
-            return state
+            return {...state,
+                meetings:payload
+            }
             
         }
         case ActionTypes.SEE_DETAIL:{
-            return state
+            return {...state,
+               meetings: payload
+            }
             
         }
 

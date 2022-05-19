@@ -3,12 +3,20 @@ import "./base.css";
 import "./main.css";
 import "./meetup-details.css";
 import "./add_meeting.css";
-import ArticleList from "./components/ArticleList";
+import axios from "axios"
+// import ArticleList from "./components/MeetupList";
 import { useSelector } from "react-redux";
-function App() {
+import { useDispatch } from "react-redux";
+import { setMeeting } from "./store/actions/mactions";
+// import  MeetupList  from "./components/MeetupList";
+
+
+function App() { 
     const [toggle_details,setToggle_details] = useState(false);
     const [toggle_add,setToggle_add] = useState(false);
     const [articles, setArticles] = useState([]);
+    const dispatch= useDispatch();
+
 
     const onDetailsBtnClick = () =>{
         setToggle_details(!toggle_details);
@@ -20,7 +28,18 @@ function App() {
         console.log(toggle_add);
     }
 
-  useEffect(()=>{
+
+//     const fetchmeeting= async()=>{
+//         const response=await axios
+//         .get('http://localhost:5000/')
+//       .catch(error => console.log(error))
+//         dispatch(setMeeting( response.data))
+//     } 
+
+//   useEffect(()=>{
+//   fetchmeeting();
+//   },[]);
+useEffect(()=>{
     fetch('http://localhost:5000/',{
         'methods':'GET',
         headers : {
@@ -33,7 +52,7 @@ function App() {
       .catch(error => console.log(error))
   },[]);
 
-
+ 
   /////   doing some redux stuff
   /////     seeing what are in store
 
@@ -79,7 +98,7 @@ console.log(meeting)
             )
             
             })} */}
-
+     {/* <Meetuplist/> */}
                 
             </div>
         </div> 
