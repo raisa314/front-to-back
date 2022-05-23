@@ -117,7 +117,7 @@ def index():
     for des_item in description:
         my_dict_des.append(des_item)
     my_dict_list["description"] = my_dict_des
-    print(my_dict_list," from flak app ")
+    print(my_dict_list," from flask app ")
     return jsonify(my_dict_list)
 #     return render_template('index.html', meetups = meetups.query.all())
 

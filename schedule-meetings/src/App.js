@@ -8,9 +8,8 @@ import axios from "axios"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setMeeting } from "./store/actions/mactions";
-import  MeetupList  from "./components/MeetupList";
+import  {MeetupList}  from "./components/MeetupList";
  
-  
 function App() { 
     const [toggle_details,setToggle_details] = useState(false);
     const [toggle_add,setToggle_add] = useState(false);
@@ -39,6 +38,7 @@ function App() {
   useEffect(()=>{
   fetchmeeting();
   },[]);
+  
 // useEffect(()=>{
 //     fetch('http://localhost:5000/',{
 //         'methods':'GET',
@@ -55,11 +55,14 @@ function App() {
  
   /////   doing some redux stuff
   /////     seeing what are in store
-
+  let meet = useSelector((state) => state.allmeeting.meetings);
+  const { title} = meet;
+  const {description } = meet;
+  
   const meeting= useSelector((state)=>state)
-console.log(meeting)
-
-
+//console.log(meeting)
+console.log("ttttttttttttttttttttttttttttt",title)
+console.log(description)
   return (
     <>
         <body>
@@ -90,8 +93,8 @@ console.log(meeting)
             <div key= {article.id}> */}
    { console.log(articles,"   from app  id", articles.id)} 
 
-                <h3>{ articles.Title}</h3>
-                <p> { articles.description } </p>
+                <h3>{title}</h3>
+                <p>{description}</p>
 
                 {/* <hr/>
                </div>
@@ -122,7 +125,8 @@ console.log(meeting)
 
         <section id="details">
             <h2>What's this Meetup is about?</h2>
-            <p>title </p>
+            <p>{title}</p>
+            <p>{description}</p>
             <footer>
                 <p>Need more details? Please <a href="">contact the organizer</a> (but don't spam us)</p>
             </footer>
