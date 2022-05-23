@@ -8,9 +8,9 @@ import axios from "axios"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setMeeting } from "./store/actions/mactions";
-// import  MeetupList  from "./components/MeetupList";
-
-
+import  MeetupList  from "./components/MeetupList";
+ 
+  
 function App() { 
     const [toggle_details,setToggle_details] = useState(false);
     const [toggle_add,setToggle_add] = useState(false);
@@ -29,28 +29,28 @@ function App() {
     }
 
 
-//     const fetchmeeting= async()=>{
-//         const response=await axios
-//         .get('http://localhost:5000/')
-//       .catch(error => console.log(error))
-//         dispatch(setMeeting( response.data))
-//     } 
-
-//   useEffect(()=>{
-//   fetchmeeting();
-//   },[]);
-useEffect(()=>{
-    fetch('http://localhost:5000/',{
-        'methods':'GET',
-        headers : {
-          'Content-Type':'application/json'
-        }
-      }) 
-    //   .then(response => console.log(response.json()))
-      .then(response => response.json())
-      .then(response => setArticles(response))
+    const fetchmeeting= async()=>{
+        const response=await axios
+        .get('http://localhost:5000/')
       .catch(error => console.log(error))
+        dispatch(setMeeting( response.data))
+    } 
+
+  useEffect(()=>{
+  fetchmeeting();
   },[]);
+// useEffect(()=>{
+//     fetch('http://localhost:5000/',{
+//         'methods':'GET',
+//         headers : {
+//           'Content-Type':'application/json'
+//         }
+//       }) 
+//     //   .then(response => console.log(response.json()))
+//       .then(response => response.json())
+//       .then(response => setArticles(response))
+//       .catch(error => console.log(error))
+//   },[]);
 
  
   /////   doing some redux stuff
